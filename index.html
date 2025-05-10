@@ -49,10 +49,10 @@
           const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${destination}&travelmode=driving`;
           window.location.href = mapsUrl;
         }, () => {
-          alert(\"ไม่สามารถดึงตำแหน่งได้ กรุณาเปิด GPS\");
+          alert("ไม่สามารถดึงตำแหน่งได้ กรุณาเปิด GPS");
         });
       } else {
-        alert(\"อุปกรณ์นี้ไม่รองรับการระบุตำแหน่ง\");
+        alert("อุปกรณ์นี้ไม่รองรับการระบุตำแหน่ง");
       }
     }
   </script>
