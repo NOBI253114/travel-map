@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>เลือกเส้นทาง</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 2rem;
+      background-color: #f5f5f5;
+      text-align: center;
+    }
+    h1 {
+      font-size: 1.8rem;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      display: block;
+      margin: 1rem auto;
+      padding: 1rem 2rem;
+      background-color: #000;
+      color: #fff;
+      border: none;
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s;
+      max-width: 300px;
+    }
+    .btn:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+  <h1>คุณต้องการเดินทางไปที่ไหน?</h1>
+  <button class="btn" onclick="goToPlace('13.6904,100.7501')">สนามบิน</button>
+  <button class="btn" onclick="goToPlace('13.7563,100.5018')">ที่พัก</button>
+  <button class="btn" onclick="goToPlace('13.7450,100.5347')">ร้านอาหาร</button>
+
+  <script>
+    function goToPlace(destination) {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(position => {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          const mapsUrl = `https://www.google.com/maps/dir/?api=1&origin=${lat},${lng}&destination=${destination}&travelmode=driving`;
+          window.location.href = mapsUrl;
+        }, () => {
+          alert(\"ไม่สามารถดึงตำแหน่งได้ กรุณาเปิด GPS\");
+        });
+      } else {
+        alert(\"อุปกรณ์นี้ไม่รองรับการระบุตำแหน่ง\");
+      }
+    }
+  </script>
+</body>
+</html>
